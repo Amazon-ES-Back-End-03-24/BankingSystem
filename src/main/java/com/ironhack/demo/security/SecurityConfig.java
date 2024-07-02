@@ -6,6 +6,7 @@ import com.ironhack.demo.security.filters.CustomAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -31,6 +32,7 @@ public class SecurityConfig {
 
     // UserDetailsService is an interface provided by Spring Security that defines a way to retrieve user information
     @Autowired
+    @Lazy
     private UserDetailsService userDetailsService;
 
     // Autowired instance of the AuthenticationManagerBuilder (provided by Spring Security)
@@ -72,7 +74,7 @@ public class SecurityConfig {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authManagerBuilder.getOrBuild());
 
         // set the URL that the filter should process
-        customAuthenticationFilter.setFilterProcessesUrl("/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
         // disable CSRF protection because we are using tokens, not session
         http.csrf().disable();

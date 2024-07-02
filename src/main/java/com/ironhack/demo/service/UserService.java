@@ -101,7 +101,9 @@ public class UserService implements UserDetailsService {
     public List<User> getUsers() {
         log.info("Fetching all users");
         return userRepository.findAll();
-    }public Role saveRole(Role role) {
+    }
+
+    public Role saveRole(Role role) {
         log.info("Saving new role {} to the database", role.getName());
         return roleRepository.save(role);
     }

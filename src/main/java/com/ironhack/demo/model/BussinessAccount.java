@@ -1,21 +1,15 @@
 package com.ironhack.demo.model;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class BussinessAccount extends Account {
     private Double creditLimit;
-    public void setCreditLimit(Double creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-    public Double getCreditLimit() {
-        return creditLimit;
-    }
 
 }

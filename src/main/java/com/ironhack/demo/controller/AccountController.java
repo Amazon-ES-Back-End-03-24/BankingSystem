@@ -1,13 +1,16 @@
 package com.ironhack.demo.controller;
 
 
+import com.ironhack.demo.dto.AccountDTO;
 import com.ironhack.demo.model.Account;
 import com.ironhack.demo.service.AccountService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Tutorial", description = "Tutorial management APIs")
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
@@ -15,19 +18,20 @@ public class AccountController {
     private AccountService accountService;
 
     @GetMapping
-    public List<Account> getAllAccounts() {
+    public List<AccountDTO> getAllAccounts() {
         return accountService.getAllAccounts();
     }
     @GetMapping("/{id}")
-    public Account getAccountById(@PathVariable Long id) {
+    public AccountDTO getAccountById(@PathVariable Long id) {
         return accountService.getAccountById(id);
     }
     @PostMapping
-    public Account createAccount(@RequestBody Account account) {
+    public AccountDTO createAccount(@RequestBody AccountDTO account) {
+
         return accountService.createAccount(account);
     }
     @PutMapping("/{id}")
-    public Account updateAccount(@PathVariable Long id, @RequestBody Account accountDetails) {
+    public AccountDTO updateAccount(@PathVariable Long id, @RequestBody AccountDTO accountDetails) {
         return accountService.updateAccount(id, accountDetails);
 
     }
